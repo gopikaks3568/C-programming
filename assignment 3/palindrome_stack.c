@@ -1,6 +1,8 @@
 //program to check given string is palidrome or not
 #include<stdio.h>
 #include<string.h>
+#include<ctype.h>
+#include<stdlib.h>
 char stack[50];
 int top=-1;
 
@@ -19,14 +21,16 @@ char pop(){
 
 int main()
 {
-    char string[30];
+    char string[30],b;
     int i,count=0,len;
     printf("Enter the String\n");
     scanf("%s",string);
     len=strlen(string);
     for ( i = 0; i < len; i++)
     {
-        push(string[i]);
+        string[i]=tolower(string[i]);
+        b=string[i];
+        push(b);
     }
      for ( i = 0; i < len; i++)
      {
