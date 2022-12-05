@@ -94,7 +94,7 @@ void pop()
         ptr = head;  
         head = head->next;  
         free(ptr);  
-        printf("Item popped");
+        printf("Item is  popped");
       
     }  
 }  
