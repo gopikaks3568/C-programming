@@ -33,7 +33,7 @@ node *createLinkedlist(int n){
     for ( i = 0; i < n; i++)
     {
         temp=(node*)malloc(sizeof(node));
-        printf("\nENter the data for the  node : ",(i+1));
+        printf("\nEnter the data for the  node : ",(i+1));
         scanf("%d",&(temp->data));
         temp->next =NULL;
         if (head==NULL)
