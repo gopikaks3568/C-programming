@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct Node
+{
+    int priority;
+    int data;
+    struct Node *next;
+} Node;
+
+typedef struct PriorityQueue
+{
+    Node *head;
+} PriorityQueue;
+
+void push(PriorityQueue *pq, int priority, int data)
+{
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node->priority = priority;
+    new_node->data = data;
+    if (pq->head == NULL || pq->head->priority < priority)
+    {
+        new_node->next = pq->head;
+    }
+    else
+    {
+        Node *curr = pq->head;
+        while (curr->next != NULL && curr->next->priority >= priority)
+        {
+            curr = curr->next;
+        }
+        new_node->next = curr->next;
+        curr->next = new_node;
+    }
+}
+
+int pop(PriorityQueue *pq)
+{
+    if (pq->head == NULL)
+    {
+        printf("Error:Trying to pop from an empty queue \n");
+        exit(1);
+    }
+    int data = pq->head->data;
+    Node *temp = pq->head;
+    pq->head = pq->head->next;
+    free(temp);
+    return data;
+}
+
+int main()
+{
+    PriorityQueue pq;
+    pq.head = NULL;
+    push(&pq, 3, 1);
+    push(&pq, 2, 2);
+    push(&pq, 1, 3);
+    push(&pq, 4, 4);
+
+    printf("%d\n", pop(&pq));
+    printf("%d\n", pop(&pq));
+    printf("%d\n", pop(&pq));
+    printf("%d\n", pop(&pq));
+
+    return 0;
+}
