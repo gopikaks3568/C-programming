@@ -1,4 +1,4 @@
-//Evaluate a postfix/prefix expression.
+// Evaluate a postfix/prefix expression.
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -7,7 +7,6 @@
 #define MAX 100
 
 int stack[MAX], top = -1;
-
 
 void push(int item)
 {
@@ -19,7 +18,6 @@ void push(int item)
     else
         stack[++top] = item;
 }
-
 
 int pop()
 {
@@ -36,14 +34,12 @@ int pop()
     }
 }
 
-
-
 int peek()
 {
-	if(top == -1)
-		return -1;
-	else
-		return stack[top];
+    if (top == -1)
+        return -1;
+    else
+        return stack[top];
 }
 
 void display()
@@ -62,40 +58,40 @@ void display()
 
 int isOperand(char ch)
 {
-    return  (isdigit(ch));
+    return (isdigit(ch));
 }
 
-int evalPostfix( char exp[] )
+int evalPostfix(char exp[])
 {
-    for(int i=0; i<strlen(exp); i++)
+    for (int i = 0; i < strlen(exp); i++)
     {
-        if(isOperand(exp[i]))
+        if (isOperand(exp[i]))
         {
 
-            push(exp[i]-'0');
+            push(exp[i] - '0');
         }
         else
         {
             int op2 = pop();
             int op1 = pop();
             int result;
-            switch(exp[i])
+            switch (exp[i])
             {
-                case '+':
-                    result = op1+op2;
-                    break;
-                case '-':
-                    result = op1-op2;
-                    break;
-                case '*':
-                    result = op1*op2;
-                    break;
-                case '/':
-                    result = op1/op2;
-                    break;
-                default:
-                    printf("Unknown operator\n");
-                    exit(0);
+            case '+':
+                result = op1 + op2;
+                break;
+            case '-':
+                result = op1 - op2;
+                break;
+            case '*':
+                result = op1 * op2;
+                break;
+            case '/':
+                result = op1 / op2;
+                break;
+            default:
+                printf("Unknown operator\n");
+                exit(0);
             }
             push(result);
         }
@@ -105,11 +101,11 @@ int evalPostfix( char exp[] )
 
 int main()
 {
-   char exp[MAX];
+    char exp[MAX];
     printf("Enter a valid postfix expression: ");
-    scanf("%s",exp);
+    scanf("%s", exp);
     int result = evalPostfix(exp);
-    printf("Result : %d \n",result);
-    
-return 0;
+    printf("Result : %d \n", result);
+
+    return 0;
 }
