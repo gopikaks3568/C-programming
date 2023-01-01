@@ -49,7 +49,7 @@ void insert()
         if (front == - 1)
 
         front = 0;
-        printf("Inset the element in queue : ");
+        printf("Insert the element in queue : ");
         scanf("%d", &add_item);
         rear = rear + 1;
         queue_array[rear] = add_item;
