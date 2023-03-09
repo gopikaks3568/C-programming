@@ -1,5 +1,6 @@
 #include <stdio.h>
-main()
+int n;
+void main()
 {
     printf("Enter the radius: \n");
     scanf("%d",&n);
